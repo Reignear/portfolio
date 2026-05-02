@@ -5,7 +5,6 @@ const Section6 = () => {
       className="bg-[#f9f9f9] py-24 px-6 md:px-12 lg:px-24 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
-        {/* Left Side: Main Featured Testimonial */}
         <div className="w-full lg:w-1/2 relative">
           <div className="absolute -top-10 -left-6 text-gray-200 opacity-50 z-0">
             <svg

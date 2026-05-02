@@ -1,3 +1,65 @@
+import canvaIcon from "../../public/canva-wordmark-2.svg";
+import capcutIcon from "../../public/capcut-3.svg";
+import claudeIcon from "../../public/claude-logo.svg";
+import geminiIcon from "../../public/gemini-icon-logo.svg";
+import googleMeetIcon from "../../public/google-meet-icon-2020-.svg";
+import googleWorkspaceIcon from "../../public/logo-google-workspace.svg";
+import notionIcon from "../../public/notion-2.svg";
+import slackIcon from "../../public/slack-new-logo.svg";
+import zoomIcon from "../../public/zoom-app.svg";
+import microsoft365Icon from "../../public/Microsoft-365.svg";
+import chatgptIcon from "../../public/chatgpt-6.svg";
+import metabusinesssuiteIcon from "../../public/facebook-2020-1-1.svg";
+const data = [
+  {
+    title: "Google Workspace",
+    icon: googleWorkspaceIcon,
+  },
+  {
+    title: "Microsoft 365",
+    icon: microsoft365Icon,
+  },
+  {
+    title: "Canva",
+    icon: canvaIcon,
+  },
+  {
+    title: "CapCut",
+    icon: capcutIcon,
+  },
+  {
+    title: "ChatGPT",
+    icon: chatgptIcon,
+  },
+  {
+    title: "Claude",
+    icon: claudeIcon,
+  },
+  {
+    title: "Gemini",
+    icon: geminiIcon,
+  },
+  {
+    title: "Notion",
+    icon: notionIcon,
+  },
+  {
+    title: "Slack",
+    icon: slackIcon,
+  },
+  {
+    title: "Zoom",
+    icon: zoomIcon,
+  },
+  {
+    title: "Google Meet",
+    icon: googleMeetIcon,
+  },
+  {
+    title: "Meta Business Suite",
+    icon: metabusinesssuiteIcon,
+  },
+];
 const Section4 = () => {
   return (
     <section
@@ -79,24 +141,17 @@ const Section4 = () => {
             <h3 className="text-xl font-bold text-[#111111] mb-10">
               The Core Toolkit
             </h3>
-            <div className="flex flex-wrap gap-4">
-              {[
-                "Google Workspace",
-                "Microsoft 365",
-                "Canva",
-                "CapCut",
-                "ChatGPT / Claude / Gemini",
-                "Notion",
-                "Slack",
-                "Zoom / Google Meet",
-                "Meta Business Suite",
-              ].map((tool) => (
-                <span
-                  key={tool}
-                  className="px-6 py-3 bg-[#e8e9eb] text-[#555555] text-[13px] font-bold rounded-lg whitespace-nowrap"
+            <div className="flex flex-wrap gap-10 justify-center">
+              {data.map((tool) => (
+                <div
+                  key={tool.title}
+                  className="flex flex-col items-center gap-2 hover:scale-110 transition-transform duration-300"
                 >
-                  {tool}
-                </span>
+                  <img src={tool.icon} alt={tool.title} className="h-15 w-15" />
+                  <p className="text-xs font-medium text-gray-700 text-center max-w-15">
+                    {tool.title}
+                  </p>
+                </div>
               ))}
             </div>
           </div>
