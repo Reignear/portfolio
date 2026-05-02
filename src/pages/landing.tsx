@@ -19,10 +19,10 @@ const Landing = () => {
       <div id="services">
         <Section3 />
       </div>
-      <div id="portfolio">
+      <div id="skills">
         <Section4 />
       </div>
-      <div id="skills">
+      <div id="portfolio">
         <Section5 />
       </div>
       {/* <Section6 /> */}

@@ -1,126 +1,165 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { Mail, Clock } from "lucide-react";
+import {
+  fadeInLeft,
+  fadeInRight,
+  staggerContainer,
+  staggerChild,
+  buttonHover,
+} from "../lib/animations";
+import { useInView } from "../lib/useInView";
 
 const Section7: React.FC = () => {
-  const date = new Date().getFullYear();
+  const { ref, isInView } = useInView();
+
   return (
-    <div
+    <motion.section
+      ref={ref}
       id="contact"
-      className="w-full bg-[#0d0d0d] text-white pt-24 pb-12 px-6 md:px-12 lg:px-24"
+      className="w-full bg-neutral-900 text-white pt-24 pb-12 px-6 md:px-12 lg:px-24"
+      initial={{ opacity: 0 }}
+      animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+      transition={{ duration: 0.6 }}
     >
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
-        {/* Left Content */}
-        <div className="flex flex-col justify-center">
-          <span className="text-[10px] md:text-xs font-bold tracking-[0.2em] text-zinc-500 uppercase mb-6">
-            Get in touch
-          </span>
-          <h2 className="text-4xl md:text-6xl font-black leading-tight mb-8 max-w-md">
-            Ready to Optimize Your Business?
-          </h2>
-          <p className="text-zinc-400 text-base md:text-lg mb-12 max-w-100 leading-relaxed">
-            Let's discuss how my services can support your goals. I respond to
-            all inquiries within 24 hours.
-          </p>
+      {/* Decorative gradient orbs */}
+      {/* <div className="absolute top-20 -right-40 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl opacity-50 -z-10"></div> */}
 
-          <div className="space-y-6">
-            <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center">
-                <Mail className="w-4 h-4 text-zinc-300" />
-              </div>
-              <span className="text-sm md:text-base font-medium">
-                reignearm@gmail.com
-              </span>
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center">
-                <Clock className="w-4 h-4 text-zinc-300" />
-              </div>
-              <span className="text-sm md:text-base font-medium">
-                Mon - Fri: 9:00 AM - 5:00 PM EST
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* Right Content - Form Card */}
-        <div className="bg-zinc-900/40 border border-zinc-800/50 rounded-2xl p-8 md:p-10 backdrop-blur-sm">
-          <form className="space-y-6">
-            <div>
-              <label className="block text-[10px] font-bold text-zinc-500 uppercase tracking-widest mb-2">
-                Name
-              </label>
-              <input
-                type="text"
-                placeholder="John Doe"
-                className="w-full bg-zinc-900/50 border border-zinc-800 rounded-lg px-4 py-3 text-zinc-300 placeholder:text-zinc-800 focus:outline-none focus:border-zinc-700 transition-colors"
-                readOnly
-              />
-            </div>
-            <div>
-              <label className="block text-[10px] font-bold text-zinc-500 uppercase tracking-widest mb-2">
-                Email
-              </label>
-              <input
-                type="email"
-                placeholder="john@example.com"
-                className="w-full bg-zinc-900/50 border border-zinc-800 rounded-lg px-4 py-3 text-zinc-300 placeholder:text-zinc-800 focus:outline-none focus:border-zinc-700 transition-colors"
-                readOnly
-              />
-            </div>
-            <div>
-              <label className="block text-[10px] font-bold text-zinc-500 uppercase tracking-widest mb-2">
-                Message
-              </label>
-              <textarea
-                rows={4}
-                placeholder="How can I help you?"
-                className="w-full bg-zinc-900/50 border border-zinc-800 rounded-lg px-4 py-3 text-zinc-300 placeholder:text-zinc-800 focus:outline-none focus:border-zinc-700 transition-colors resize-none"
-                readOnly
-              ></textarea>
-            </div>
-            <button
-              type="button"
-              className="w-full bg-white text-black font-bold py-4 rounded-lg hover:bg-zinc-200 transition-colors mt-4 text-sm uppercase tracking-wide"
+      <div className="max-w-7xl mx-auto">
+        {/* Contact Grid */}
+        <motion.div
+          className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-14"
+          variants={staggerContainer}
+          initial="initial"
+          animate={isInView ? "animate" : "initial"}
+        >
+          {/* Left Content */}
+          <motion.div
+            className="flex flex-col justify-center"
+            variants={fadeInLeft}
+          >
+            <motion.span
+              className="text-xs font-bold tracking-wider text-blue-400 uppercase mb-6"
+              initial={{ opacity: 0, x: -20 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
             >
-              Send Message
-            </button>
-          </form>
-        </div>
+              Get in Touch
+            </motion.span>
+
+            <motion.h2
+              className="text-4xl md:text-5xl font-bold leading-tight mb-8 max-w-md"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              Let's Work Together
+            </motion.h2>
+
+            <motion.p
+              className="text-neutral-400 text-base md:text-lg mb-12 max-w-lg leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              Have a project in mind or questions about my services? I'd love to
+              hear from you. I respond to all inquiries within 24 hours.
+            </motion.p>
+
+            {/* Contact Info */}
+            <motion.div
+              className="space-y-6"
+              variants={staggerContainer}
+              initial="initial"
+              animate={isInView ? "animate" : "initial"}
+            >
+              <motion.a
+                href="mailto:reignearm@gmail.com"
+                className="flex items-center gap-4 group"
+                variants={staggerChild}
+              >
+                <motion.div
+                  className="w-12 h-12 rounded-full bg-blue-600/20 border border-blue-500/30 flex items-center justify-center group-hover:bg-blue-600/40 transition-colors"
+                  whileHover={{ scale: 1.1 }}
+                >
+                  <Mail className="w-5 h-5 text-blue-400" />
+                </motion.div>
+                <div>
+                  <p className="text-sm text-neutral-400">Email</p>
+                  <p className="font-semibold text-white hover:text-blue-400 transition-colors">
+                    reignearm@gmail.com
+                  </p>
+                </div>
+              </motion.a>
+
+              <motion.div
+                className="flex items-center gap-4"
+                variants={staggerChild}
+              >
+                <motion.div
+                  className="w-12 h-12 rounded-full bg-blue-600/20 border border-blue-500/30 flex items-center justify-center"
+                  whileHover={{ scale: 1.1 }}
+                >
+                  <Clock className="w-5 h-5 text-blue-400" />
+                </motion.div>
+                <div>
+                  <p className="text-sm text-neutral-400">Response Time</p>
+                  <p className="font-semibold text-white">Within 24 hours</p>
+                </div>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+
+          {/* Right CTA Card */}
+          <motion.div
+            className="bg-linear-to-br from-neutral-800 to-neutral-900 border border-neutral-700/50 rounded-2xl p-10 backdrop-blur-sm"
+            variants={fadeInRight}
+            whileHover={{
+              boxShadow: "0 0 40px rgba(59, 130, 246, 0.1)",
+              borderColor: "rgba(59, 130, 246, 0.3)",
+            }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              <h3 className="text-2xl font-bold mb-6">Ready to Get Started?</h3>
+              <p className="text-neutral-400 mb-8 leading-relaxed">
+                Click the button below to schedule a consultation call or send
+                me an email with your requirements.
+              </p>
+
+              <motion.button
+                onClick={() =>
+                  (window.location.href =
+                    "mailto:reignearm@gmail.com?subject=Project%20Inquiry")
+                }
+                className="btn-primary w-full text-base mb-4"
+                {...buttonHover}
+              >
+                Start a Conversation
+              </motion.button>
+
+              <motion.a
+                href="https://www.linkedin.com/in/reignear-magallanes-9015342b1/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary w-full text-base text-center block"
+                whileHover={{ scale: 1.02 }}
+              >
+                Connect on LinkedIn
+              </motion.a>
+
+              <p className="text-xs text-neutral-500 mt-6 text-center">
+                Available for full-time and project-based work
+              </p>
+            </motion.div>
+          </motion.div>
+        </motion.div>
       </div>
-
-      {/* Footer */}
-      <div className="max-w-7xl mx-auto pt-12 border-t border-zinc-900 flex flex-col md:flex-row justify-between items-center gap-8">
-        <div className="text-base font-black tracking-widest uppercase">
-          VA Executive
-        </div>
-
-        <div className="flex items-center gap-8 text-[11px] font-medium text-zinc-500 uppercase tracking-wider">
-          <a
-            href="https://www.facebook.com/ReignearM"
-            className="hover:text-white transition-colors"
-          >
-            Facebook
-          </a>
-
-          <a
-            href="https://www.linkedin.com/in/reignear-magallanes-9015342b1/"
-            className="hover:text-white transition-colors"
-          >
-            LinkedIn
-          </a>
-          <a
-            href="https://www.instagram.com/ebyongggg/?hl=en"
-            className="hover:text-white transition-colors"
-          >
-            Instagram
-          </a>
-        </div>
-
-        <div className="text-[11px] text-zinc-600 font-medium">
-          © {date} VA Executive. All rights reserved.
-        </div>
-      </div>
-    </div>
+    </motion.section>
   );
 };
 

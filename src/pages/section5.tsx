@@ -1,118 +1,172 @@
+import { motion } from "framer-motion";
+import { staggerContainer, staggerChild } from "../lib/animations";
+import { useInView } from "../lib/useInView";
+
 const Section5 = () => {
+  const { ref, isInView } = useInView();
+
   const projects = [
     {
       title: "SK Website & System Management",
       description:
-        "Managed and maintained the Sangguniang Kabataan website, ensuring accurate content updates, system testing, and smooth user experience for youth-related services.",
+        "Managed and maintained the Sangguniang Kabataan website, ensuring accurate content updates, system testing, and smooth user experience.",
       image:
         "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2400&auto=format&fit=crop",
-      isMac: false,
+      tag: "Web Management",
     },
     {
       title: "Social Media Content & Engagement",
       description:
-        "Planned, created, and scheduled Facebook content while monitoring weekly engagement metrics to improve audience interaction and online presence.",
+        "Planned, created, and scheduled Facebook content while monitoring weekly engagement metrics to improve audience interaction.",
       image:
         "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=2400&auto=format&fit=crop",
-      isMac: false,
+      tag: "Social Media",
     },
     {
       title: "Email & Inbox Management System",
       description:
-        "Organized and responded to 30+ weekly inquiries, prioritizing messages, maintaining professional communication, and improving response turnaround time.",
+        "Organized and responded to 30+ weekly inquiries, prioritizing messages, maintaining professional communication.",
       image:
         "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2400&auto=format&fit=crop",
-      isMac: false,
+      tag: "Communication",
     },
     {
       title: "Calendar & Task Coordination",
       description:
-        "Managed scheduling, task tracking, and meeting coordination using Google Calendar and Notion to ensure timely completion of daily operations.",
+        "Managed scheduling, task tracking, and meeting coordination using Google Calendar and Notion.",
       image:
         "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?q=80&w=2400&auto=format&fit=crop",
-      isMac: false,
+      tag: "Organization",
     },
     {
       title: "Data Entry & Records Management",
       description:
-        "Maintained and updated structured data in Google Sheets, ensuring accuracy, organization, and easy retrieval of student and administrative records.",
+        "Maintained and updated structured data in Google Sheets, ensuring accuracy, organization, and easy retrieval.",
       image:
         "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2400&auto=format&fit=crop",
-      isMac: false,
+      tag: "Data Management",
     },
     {
       title: "CRM & Workflow Optimization",
       description:
-        "Improved internal workflows by organizing digital tools, streamlining repetitive tasks, and supporting efficient communication across teams.",
+        "Improved internal workflows by organizing digital tools, streamlining repetitive tasks, and supporting efficient communication.",
       image:
         "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2400&auto=format&fit=crop",
-      isMac: false,
-    },
-    {
-      title: "Virtual Meeting & Communication Support",
-      description:
-        "Handled meeting setup, Zoom/Google Meet coordination, and follow-ups to ensure smooth communication between team members and clients.",
-      image:
-        "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?q=80&w=2400&auto=format&fit=crop",
-      isMac: false,
+      tag: "Process Optimization",
     },
   ];
 
   return (
-    <section id="portfolio" className="bg-white py-24 px-6 md:px-12 lg:px-24">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
-        <div className="max-w-xl">
-          <span className="inline-block text-[11px] uppercase tracking-[0.4em] font-black text-gray-400 mb-6">
+    <section
+      ref={ref}
+      id="portfolio"
+      className="bg-linear-to-b from-slate-50 to-white py-24 px-6 md:px-12 lg:px-24"
+    >
+      <div className="max-w-7xl mx-auto">
+        {/* Section Header */}
+        <motion.div
+          className="text-center mb-20"
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <motion.span
+            className="badge-primary"
+            initial={{ opacity: 0, x: -20 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
             PORTFOLIO
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#111111] leading-tight tracking-tight">
-            Experience in Action.
-          </h2>
-        </div>
-        <p className="text-gray-400 text-lg md:text-xl max-w-sm text-left md:text-right font-light leading-relaxed">
-          A selection of high-impact projects where I've delivered
-          organizational and technical excellence.
-        </p>
-      </div>
+          </motion.span>
+          <motion.h2
+            className="text-4xl md:text-5xl font-bold text-neutral-900 leading-tight tracking-tight mt-6 mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            Real Results in Action
+          </motion.h2>
+          <motion.p
+            className="text-neutral-600 text-lg max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            A showcase of projects where I've delivered organizational
+            excellence and tangible business impact.
+          </motion.p>
+        </motion.div>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-        {projects.map((project, index) => (
-          <div key={index} className="flex flex-col group">
-            {/* Project Image Container */}
-            <div
-              className={`relative overflow-hidden rounded-2xl mb-8 ${project.isMac ? "bg-[#f5f5f7] p-10 flex items-center justify-center aspect-[1.4/1]" : "aspect-[1.4/1]"}`}
+        {/* Projects Grid */}
+        <motion.div
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12"
+          variants={staggerContainer}
+          initial="initial"
+          animate={isInView ? "animate" : "initial"}
+        >
+          {projects.map((project, index) => (
+            <motion.div
+              key={index}
+              className="group flex flex-col"
+              variants={staggerChild}
             >
-              {project.isMac ? (
-                <div className="relative w-full h-full flex flex-col items-center justify-center">
-                  {/* Simplified Laptop Frame */}
-                  <div className="relative w-[90%] aspect-16/10 bg-white rounded-lg shadow-2xl border border-gray-200 overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover opacity-80"
-                    />
-                  </div>
-                  {/* Laptop Base */}
-                  <div className="w-full h-3 bg-linear-to-b from-[#e0e0e0] to-[#b0b0b0] rounded-b-xl mt-0.5 shadow-md"></div>
-                </div>
-              ) : (
-                <img
+              {/* Project Image */}
+              <motion.div
+                className="relative overflow-hidden rounded-2xl mb-8 aspect-4/3 bg-neutral-100"
+                whileHover={{
+                  boxShadow: "0 30px 60px rgba(59, 130, 246, 0.15)",
+                }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              >
+                <motion.img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover rounded-2xl grayscale-[0.2] group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105"
+                  className="w-full h-full object-cover"
+                  initial={{ scale: 1, filter: "brightness(1)" }}
+                  whileHover={{
+                    scale: 1.1,
+                    filter: "brightness(1.05)",
+                  }}
+                  transition={{
+                    duration: 0.5,
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 20,
+                  }}
                 />
-              )}
-            </div>
 
-            {/* Project Info */}
-            <h3 className="text-2xl font-bold text-[#111111] mb-4 tracking-tight">
-              {project.title}
-            </h3>
-            <p className="text-gray-500 text-base leading-relaxed max-w-md font-medium">
-              {project.description}
-            </p>
-          </div>
-        ))}
+                {/* Overlay tag */}
+                <motion.div
+                  className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full text-xs font-semibold text-blue-600 border border-blue-100"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileHover={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {project.tag}
+                </motion.div>
+              </motion.div>
+
+              {/* Project Info */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={
+                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }
+                }
+                transition={{ duration: 0.5, delay: index * 0.05 + 0.3 }}
+              >
+                <motion.h3
+                  className="text-2xl font-bold text-neutral-900 mb-3 leading-tight"
+                  whileHover={{ color: "#3b82f6" }}
+                >
+                  {project.title}
+                </motion.h3>
+                <motion.p className="text-neutral-600 text-base leading-relaxed">
+                  {project.description}
+                </motion.p>
+              </motion.div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

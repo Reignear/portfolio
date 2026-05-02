@@ -1,58 +1,205 @@
+import { motion } from "framer-motion";
+import {
+  fadeInUp,
+  badgeSlide,
+  buttonHover,
+  staggerContainer,
+  pulse,
+} from "../lib/animations";
+
 const HeroSection = () => {
+  const containerVariants = {
+    initial: {},
+    animate: {
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const imageVariants = {
+    initial: {
+      opacity: 0,
+      x: 60,
+    },
+    animate: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.8,
+        delay: 0.4,
+      },
+    },
+  };
+
+  // Floating badge animation
+  const badgeVariants = {
+    initial: {
+      opacity: 0,
+      scale: 0.8,
+      y: 20,
+    },
+    animate: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+      },
+    },
+    whileHover: {
+      scale: 1.08,
+      transition: { duration: 0.3 },
+    },
+  };
+
   return (
-    <section className="relative bg-[#0d0d0d] text-white pt-32 pb-16 px-6 md:px-12 lg:px-24 overflow-hidden min-h-screen flex items-center">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        {/* Left Content */}
-        <div className="z-20 text-left">
-          <div className="mb-10">
-            <span className="inline-block px-4 py-1.5 rounded-full border border-gray-800 bg-gray-900/40 text-[10px] uppercase tracking-[0.2em] font-bold text-gray-400">
-              STRATEGIC PARTNERSHIP
+    <section className="relative bg-linear-to-br from-slate-50 via-blue-50 to-slate-100 pt-20 pb-24 px-6 md:px-12 lg:px-24 overflow-hidden min-h-screen flex items-center">
+      {/* Decorative gradient orbs */}
+      <div className="absolute top-20 -right-40 w-80 h-80 bg-blue-200/30 rounded-full blur-3xl opacity-50 -z-10"></div>
+      <div className="absolute -bottom-20 -left-40 w-96 h-96 bg-blue-100/20 rounded-full blur-3xl opacity-50 -z-10"></div>
+
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+        {/* Left Content - Staggered animations */}
+        <motion.div
+          className="z-20 text-left"
+          variants={containerVariants}
+          initial="initial"
+          animate="animate"
+        >
+          {/* Badge with slide animation */}
+          <motion.div className="mb-8" variants={badgeSlide}>
+            <span className="badge-neutral">
+              ✨ TRUSTED BY ENTREPRENEURS & EXECUTIVES
             </span>
-          </div>
+          </motion.div>
 
-          <h1 className="text-5xl md:text-6xl lg:text-[76px] font-bold leading-[1.1] mb-8 tracking-tight">
-            Reliable Virtual Assistant Helping You Stay Organized and Productive
-          </h1>
+          {/* Heading with fade and slide up */}
+          <motion.h1
+            className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.15] mb-6 tracking-tight text-neutral-900"
+            variants={fadeInUp}
+          >
+            Streamline Your Business with Expert Virtual Support
+          </motion.h1>
 
-          <p className="text-gray-400 text-lg md:text-xl max-w-125 mb-12 leading-relaxed font-light">
-            Elevating your business efficiency through meticulous administrative
-            support and strategic digital management.
-          </p>
+          {/* Subheading */}
+          <motion.p
+            className="text-lg md:text-xl text-neutral-600 max-w-xl mb-10 leading-relaxed font-light"
+            variants={fadeInUp}
+          >
+            I handle the administrative tasks that slow you down, so you can
+            focus on strategic growth and what matters most to your business.
+          </motion.p>
 
-          <div className="flex flex-wrap gap-5">
-            <button className="px-10 py-4.5 bg-white text-black font-extrabold rounded-lg hover:bg-gray-100 transition-all cursor-pointer">
-              Work With Me
-            </button>
-            <button className="px-10 py-4.5 bg-transparent border border-gray-800 text-white font-extrabold rounded-lg hover:bg-gray-900 transition-all cursor-pointer">
-              View Services
-            </button>
-          </div>
-        </div>
+          {/* CTA Buttons - Staggered entrance */}
+          <motion.div
+            className="flex flex-col sm:flex-row gap-4"
+            variants={staggerContainer}
+            initial="initial"
+            animate="animate"
+          >
+            <motion.button
+              {...buttonHover}
+              onClick={() =>
+                (window.location.href =
+                  "mailto:reignearm@gmail.com?subject=Hiring%20Inquiry")
+              }
+              className="btn-primary text-base"
+              variants={fadeInUp}
+            >
+              Get Started
+            </motion.button>
+            <motion.a
+              href="#portfolio"
+              className="btn-secondary text-base text-center"
+              variants={fadeInUp}
+            >
+              View My Work
+            </motion.a>
+          </motion.div>
 
-        {/* Right Image Space */}
-        <div className="relative flex justify-center lg:justify-end mt-12 lg:mt-0">
-          <div className="relative">
-            {/* Background decorative card */}
-            <div className="absolute -top-12 -left-12 w-full h-full bg-[#1a1a1a]/40 rounded-3xl -z-10 -rotate-3 border border-gray-800/20 backdrop-blur-sm"></div>
+          {/* Trust indicators */}
+          <motion.div
+            className="mt-12 pt-8 border-t border-neutral-200 flex flex-wrap gap-8"
+            variants={fadeInUp}
+          >
+            <div>
+              <p className="text-2xl md:text-3xl font-bold text-neutral-900">
+                3+
+              </p>
+              <p className="text-sm text-neutral-600">Years Experience</p>
+            </div>
+            <div>
+              <p className="text-2xl md:text-3xl font-bold text-neutral-900">
+                5+
+              </p>
+              <p className="text-sm text-neutral-600">Clients Served</p>
+            </div>
+            <div>
+              <p className="text-2xl md:text-3xl font-bold text-neutral-900">
+                24/7
+              </p>
+              <p className="text-sm text-neutral-600">Support Available</p>
+            </div>
+          </motion.div>
+        </motion.div>
 
-            {/* Main Image */}
-            <div className="relative overflow-hidden rounded-3xl shadow-[0_35px_60px_-15px_rgba(0,0,0,0.6)] border border-gray-800/30">
+        {/* Right Image Space - Entrance from right */}
+        <motion.div
+          className="relative flex justify-center lg:justify-end mt-12 lg:mt-0"
+          variants={imageVariants}
+          initial="initial"
+          animate="animate"
+        >
+          <div className="relative w-full max-w-md">
+            {/* Background decorative card with subtle animation */}
+            <motion.div
+              className="absolute -top-8 -right-8 w-full h-full bg-linear-to-br from-blue-500/10 to-blue-600/5 rounded-3xl -z-10 rotate-3 border border-blue-200/50 backdrop-blur-sm"
+              initial={{ opacity: 0, rotate: 0 }}
+              animate={{ opacity: 1, rotate: 3 }}
+              transition={{ duration: 1, delay: 0.5 }}
+            />
+
+            {/* Main Image with hover lift effect */}
+            <motion.div
+              className="relative overflow-hidden rounded-2xl shadow-xl border border-neutral-200"
+              whileHover={{
+                y: -12,
+                boxShadow: "0 35px 70px -15px rgba(59, 130, 246, 0.15)",
+              }}
+              transition={{ duration: 0.4 }}
+            >
               <img
-                // src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1288&auto=format&fit=crop"
                 src="/enhanced.jpg"
                 alt="Professional Virtual Assistant"
-                className="w-full max-w-120 aspect-4/5 object-cover grayscale-[0.05]"
+                className="w-full aspect-4/5 object-cover"
               />
-            </div>
+            </motion.div>
 
-            {/* Floating Status Badge */}
-            <div className="absolute -bottom-10 -left-12 bg-white p-6 pr-10 rounded-2xl shadow-2xl flex items-center gap-5 border border-gray-100 z-30 transform hover:scale-105 transition-transform duration-300">
-              <div className="w-14 h-14 bg-[#333333] rounded-full flex items-center justify-center text-white shadow-inner">
+            {/* Floating Status Badge - Animated entrance and pulse */}
+            <motion.div
+              className="absolute -bottom-8 -left-6 bg-white p-5 pr-8 rounded-2xl shadow-lg flex items-center gap-4 border border-neutral-100 z-30"
+              variants={badgeVariants}
+              initial="initial"
+              animate="animate"
+              whileHover={{
+                scale: 1.08,
+                boxShadow: "0 25px 50px rgba(0, 0, 0, 0.1)",
+              }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            >
+              <motion.div
+                className="w-12 h-12 bg-linear-to-br from-green-400 to-green-500 rounded-full flex items-center justify-center text-white shadow-md shrink-0"
+                variants={pulse}
+                initial="initial"
+                animate="animate"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  className="w-7 h-7"
+                  className="w-6 h-6"
                 >
                   <path
                     fillRule="evenodd"
@@ -60,18 +207,18 @@ const HeroSection = () => {
                     clipRule="evenodd"
                   />
                 </svg>
-              </div>
+              </motion.div>
               <div className="flex flex-col">
-                <span className="text-[10px] uppercase font-black tracking-[0.15em] text-gray-500 leading-none mb-2">
-                  STATUS
+                <span className="text-xs uppercase font-bold tracking-wider text-neutral-500 leading-none mb-1">
+                  Availability
                 </span>
-                <span className="text-[18px] font-black text-[#111111] leading-none whitespace-nowrap">
-                  Currently Available
+                <span className="text-base font-bold text-neutral-900 leading-none">
+                  Open for Various Roles
                 </span>
               </div>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
