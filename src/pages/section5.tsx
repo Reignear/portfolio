@@ -169,14 +169,14 @@ const Section5 = () => {
                 <motion.p className="text-neutral-600 text-base leading-relaxed">
                   {project.description}
                 </motion.p>
-                <motion.a
+                {/* <motion.a
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-5 text-sm underline underline-offset-5 font-semibold hover:text-blue-400 transition-colors flex gap-1 items-center"
                 >
                   View Sample
-                </motion.a>
+                </motion.a> */}
               </motion.div>
             </motion.div>
           ))}
