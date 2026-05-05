@@ -14,6 +14,7 @@ const Section5 = () => {
         "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2400&auto=format&fit=crop",
       tag: "Web Management",
       link: "/sample/website",
+      show: false,
     },
     {
       title: "Social Media Content & Engagement",
@@ -23,6 +24,7 @@ const Section5 = () => {
         "https://images.unsplash.com/photo-1663836657800-39ab390d80b9?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       tag: "Social Media",
       link: "/sample/social-media",
+      show: true,
     },
     {
       title: "Email & Inbox Management System",
@@ -32,6 +34,7 @@ const Section5 = () => {
         "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2400&auto=format&fit=crop",
       tag: "Communication",
       link: "/sample/email-management",
+      show: false,
     },
     {
       title: "Calendar & Task Coordination",
@@ -41,6 +44,7 @@ const Section5 = () => {
         "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?q=80&w=2400&auto=format&fit=crop",
       tag: "Organization",
       link: "/sample/calendar-management",
+      show: false,
     },
     {
       title: "Data Entry & Records Management",
@@ -50,6 +54,7 @@ const Section5 = () => {
         "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2400&auto=format&fit=crop",
       tag: "Data Management",
       link: "/sample/data-management",
+      show: false,
     },
     {
       title: "CRM & Workflow Optimization",
@@ -59,6 +64,7 @@ const Section5 = () => {
         "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2400&auto=format&fit=crop",
       tag: "Process Optimization",
       link: "/sample/crm",
+      show: false,
     },
   ];
 
@@ -169,14 +175,14 @@ const Section5 = () => {
                 <motion.p className="text-neutral-600 text-base leading-relaxed">
                   {project.description}
                 </motion.p>
-                {/* <motion.a
+                <motion.a
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-5 text-sm underline underline-offset-5 font-semibold hover:text-blue-400 transition-colors flex gap-1 items-center"
+                  className={`mt-5 text-sm underline underline-offset-5 font-semibold hover:text-blue-400 transition-colors flex gap-1 items-center ${project.show ? "opacity-100" : "hidden"}`}
                 >
                   View Sample
-                </motion.a> */}
+                </motion.a>
               </motion.div>
             </motion.div>
           ))}
