@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Mail, Clock } from "lucide-react";
+import { Mail, Clock, Code } from "lucide-react";
 import {
   fadeInLeft,
   fadeInRight,
@@ -115,12 +115,7 @@ const Section7: React.FC = () => {
                   className="w-12 h-12 rounded-full bg-blue-600/20 border border-blue-500/30 flex items-center justify-center"
                   whileHover={{ scale: 1.1 }}
                 >
-                  {/* <Clock className="w-5 h-5 text-blue-400" /> */}
-                  <img
-                    src="/github-icon-1.svg"
-                    alt="GitHub"
-                    className="h-10 w-10 bg-white rounded-full border-2"
-                  />
+                  <Code className="h-6 w-6 text-blue-400" />
                 </motion.div>
                 <div>
                   <p className="text-sm text-neutral-400">Github Account</p>
