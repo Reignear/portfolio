@@ -15,6 +15,8 @@ import microsoft365Icon from "/Microsoft-365.svg";
 import chatgptIcon from "/chatgpt-6.svg";
 import metabusinesssuiteIcon from "/facebook-2020-1-1.svg";
 import salesforceIcon from "/salesforce-2.svg";
+import adobeIcon from "/adobe-photoshop-2.svg";
+
 const data = [
   {
     title: "Google Workspace",
@@ -67,6 +69,10 @@ const data = [
   {
     title: "Salesforce",
     icon: salesforceIcon,
+  },
+  {
+    title: "Adobe Photoshop",
+    icon: adobeIcon,
   },
 ];
 const Section4 = () => {

@@ -132,7 +132,7 @@ const HeroSection = () => {
             </div>
             <div>
               <p className="text-2xl md:text-3xl font-bold text-neutral-900">
-                5+
+                2+
               </p>
               <p className="text-sm text-neutral-600">Clients Served</p>
             </div>
