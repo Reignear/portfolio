@@ -14,7 +14,7 @@ const Section5 = () => {
         "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2400&auto=format&fit=crop",
       tag: "Web Management",
       link: "/sample/website",
-      show: false,
+      show: true,
     },
     {
       title: "Social Media Content & Engagement",
